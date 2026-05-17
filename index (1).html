@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Utavu Foundation — Research & Innovation</title>
+<meta name="description" content="Supporting research, prototyping and social innovation that solves local problems at scale. Utavu: enabling ideas to grow." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #1a3a2a;
+    --green-mid: #2d6245;
+    --green-accent: #4a9467;
+    --green-light: #b8d9c5;
+    --green-pale: #edf5f0;
+    --sand: #f5f0e8;
+    --sand-dark: #e8dfc8;
+    --ink: #1a1a16;
+    --ink-mid: #3a3a30;
+    --ink-muted: #6b6b5a;
+    --white: #fdfcf9;
+    --radius: 4px;
+    --radius-lg: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--sand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 34px;
+    height: 34px;
+    background: var(--green-dark);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-logo-mark svg { width: 20px; height: 20px; }
+
+  .nav-logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-dark);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo-text span {
+    font-weight: 300;
+    color: var(--ink-muted);
+    font-size: 14px;
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0;
+    margin-top: -3px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-mid);
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green-accent); }
+
+  .nav-cta {
+    background: var(--green-dark);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-mid) !important; color: var(--white) !important; }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background: var(--green-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image: radial-gradient(circle at 1px 1px, var(--green-light) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .hero-content {
+    padding: 80px 5vw 80px 8vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--green-accent);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--green-light);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.72);
+    max-width: 480px;
+    margin-bottom: 44px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--green-accent);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #5aad7c; transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--green-light); transform: translateY(-1px); }
+
+  .hero-visual {
+    position: relative;
+    height: 100%;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 8vw 80px 0;
+  }
+
+  .hero-card-stack {
+    position: relative;
+    width: 340px;
+    height: 420px;
+  }
+
+  .hcard {
+    position: absolute;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(8px);
+    padding: 28px;
+    color: white;
+  }
+
+  .hcard-1 {
+    width: 300px;
+    top: 0; left: 20px;
+    transform: rotate(-3deg);
+    animation: float1 6s ease-in-out infinite;
+  }
+
+  .hcard-2 {
+    width: 300px;
+    top: 80px; left: 40px;
+    animation: float2 7s ease-in-out infinite;
+  }
+
+  .hcard-3 {
+    width: 260px;
+    top: 200px; left: 0px;
+    transform: rotate(2deg);
+    animation: float3 8s ease-in-out infinite;
+  }
+
+  @keyframes float1 {
+    0%,100%{transform:rotate(-3deg) translateY(0)} 50%{transform:rotate(-3deg) translateY(-10px)}
+  }
+  @keyframes float2 {
+    0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)}
+  }
+  @keyframes float3 {
+    0%,100%{transform:rotate(2deg) translateY(0)} 50%{transform:rotate(2deg) translateY(-8px)}
+  }
+
+  .hcard-icon {
+    width: 36px; height: 36px;
+    background: var(--green-accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .hcard-icon svg { width: 18px; height: 18px; fill: white; }
+
+  .hcard h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: white;
+  }
+
+  .hcard p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--sand);
+    border-bottom: 1px solid var(--sand-dark);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .stat-item {
+    padding: 32px 64px;
+    text-align: center;
+    border-right: 1px solid var(--sand-dark);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 96px 8vw;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--green-dark);
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: var(--ink-muted);
+    max-width: 560px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+  }
+
+  .about-image-main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--green-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-image-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-image-accent {
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    width: 55%;
+    aspect-ratio: 4/3;
+    background: var(--green-dark);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 4px solid var(--white);
+  }
+
+  .about-image-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-quote {
+    border-left: 3px solid var(--green-accent);
+    padding-left: 24px;
+    margin: 36px 0;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--green-dark);
+    line-height: 1.5;
+  }
+
+  .about-pillars {
+    display: flex;
+    gap: 24px;
+    margin-top: 36px;
+  }
+
+  .pillar {
+    flex: 1;
+    padding: 20px;
+    background: var(--green-pale);
+    border-radius: var(--radius);
+    border-top: 3px solid var(--green-accent);
+  }
+
+  .pillar-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+  }
+
+  .pillar-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  /* PROGRAMS */
+  .programs-section {
+    background: var(--green-dark);
+    color: white;
+  }
+
+  .programs-section .section-title { color: white; }
+  .programs-section .section-desc { color: rgba(255,255,255,0.65); }
+  .programs-section .section-label { color: var(--green-light); }
+
+  .programs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .prog-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    transition: background 0.25s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .prog-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+  }
+
+  .prog-num {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .prog-icon {
+    width: 44px; height: 44px;
+    background: var(--green-accent);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .prog-icon svg { width: 22px; height: 22px; fill: white; }
+
+  .prog-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+
+  .prog-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .prog-link {
+    font-size: 13px;
+    color: var(--green-light);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .prog-link:hover { gap: 10px; }
+
+  /* IMPACT */
+  .impact-section { background: var(--sand); }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .impact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 44px;
+  }
+
+  .impact-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    background: var(--white);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--green-accent);
+    transition: transform 0.2s;
+  }
+
+  .impact-item:hover { transform: translateX(4px); }
+
+  .impact-item-num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green-accent);
+    line-height: 1;
+    min-width: 60px;
+  }
+
+  .impact-item-text h4 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+  }
+
+  .impact-item-text p {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .testimonial-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    border: 1px solid var(--sand-dark);
+    transition: transform 0.2s;
+  }
+
+  .testimonial-card:hover { transform: translateY(-3px); }
+
+  .testimonial-text {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .testimonial-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--green-dark);
+    flex-shrink: 0;
+  }
+
+  .testimonial-author-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .testimonial-author-role {
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+
+  .star {
+    width: 14px; height: 14px;
+    background: var(--green-accent);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  /* TEAM */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .team-card {
+    text-align: center;
+  }
+
+  .team-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin: 0 auto 16px;
+  }
+
+  .team-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .team-role {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  /* PARTNERS */
+  .partners-section {
+    background: var(--green-pale);
+    padding: 60px 8vw;
+    text-align: center;
+  }
+
+  .partners-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 36px;
+  }
+
+  .partners-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .partner-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    opacity: 0.5;
+    letter-spacing: -0.3px;
+    transition: opacity 0.2s;
+  }
+
+  .partner-logo:hover { opacity: 0.85; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--green-dark);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(74,148,103,0.3) 0%, transparent 70%);
+  }
+
+  .cta-section .section-title { color: white; margin-bottom: 16px; }
+  .cta-section .section-desc { color: rgba(255,255,255,0.65); margin: 0 auto 44px; text-align: center; }
+  .cta-section .section-label { color: var(--green-light); }
+
+  .cta-content { position: relative; z-index: 1; }
+
+  .cta-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-section .btn-outline { border-color: rgba(255,255,255,0.3); }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-detail {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--green-pale);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 18px; height: 18px; stroke: var(--green-accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  .contact-detail-text h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .contact-detail-text p {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row { display: flex; gap: 16px; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mid);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 12px 16px;
+    border: 1.5px solid var(--sand-dark);
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+    resize: vertical;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--green-accent);
+  }
+
+  .form-group textarea { min-height: 120px; }
+
+  .form-submit {
+    background: var(--green-dark);
+    color: var(--white);
+    border: none;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover { background: var(--green-mid); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    padding: 64px 8vw 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 16px;
+    max-width: 280px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-brand .nav-logo-text { color: white; }
+  .footer-brand .nav-logo-text span { color: rgba(255,255,255,0.45); }
+
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-col ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--green-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* MOBILE NAV */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--sand-dark);
+    z-index: 99;
+    padding: 24px 5vw;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--ink-mid); font-size: 16px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero-content { padding: 60px 5vw; }
+    .about-grid, .impact-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-image-wrap { max-height: 360px; }
+    .about-image-main { aspect-ratio: 3/2; }
+    .about-image-accent { display: none; }
+    .programs-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .stat-item { padding: 24px 32px; }
+    .programs-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    section { padding: 64px 5vw; }
+  }
+
+  @media (max-width: 600px) {
+    .stats-bar { flex-wrap: wrap; }
+    .stat-item { width: 50%; border-right: none; border-bottom: 1px solid var(--sand-dark); }
+    .programs-grid, .team-grid, .footer-grid { grid-template-columns: 1fr; }
+    .about-pillars { flex-direction: column; }
+    .form-row { flex-direction: column; }
+    .hero-actions { flex-direction: column; }
+  }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="3" fill="white"/>
+        <path d="M10 2 Q15 6 18 10 Q15 14 10 18 Q5 14 2 10 Q5 6 10 2Z" stroke="white" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      Utavu Foundation
+      <span>Research & Innovation</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Partner with us</a></li>
+  </ul>
+
+  <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#programs" onclick="toggleMenu()">Programs</a>
+  <a href="#impact" onclick="toggleMenu()">Impact</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" class="nav-cta" style="align-self:flex-start">Partner with us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content reveal">
+    <div class="hero-badge">Kenya · East Africa · Global</div>
+    <h1>Enabling <em>ideas</em> to grow and <em>solve</em> at scale</h1>
+    <p class="hero-desc">Supporting research, prototyping and social innovation that solves local problems at scale. We back the thinkers, makers, and changemakers of Africa's future.</p>
+    <div class="hero-actions">
+      <a href="#programs" class="btn-primary">Explore our programs</a>
+      <a href="#about" class="btn-outline">Learn our story</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hcard hcard-1">
+        <div class="hcard-icon">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Research & Prototyping</h3>
+        <p>Turning ideas into tested, evidence-based solutions for local challenges.</p>
+      </div>
+      <div class="hcard hcard-2">
+        <div class="hcard-icon">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Community-Led Innovation</h3>
+        <p>Placing communities at the center of every solution we co-create.</p>
+      </div>
+      <div class="hcard hcard-3">
+        <div class="hcard-icon">
+          <svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Sustainable Scale</h3>
+        <p>Building models that outlast our involvement and grow without us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">47+</div>
+    <div class="stat-label">Projects funded</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">12K</div>
+    <div class="stat-label">Lives impacted</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">8</div>
+    <div class="stat-label">Counties reached</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">2019</div>
+    <div class="stat-label">Founded</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <div class="about-image-main" style="background: linear-gradient(135deg, var(--green-light) 0%, var(--green-mid) 100%); display:flex; align-items:center; justify-content:center;">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="56" stroke="white" stroke-width="2" stroke-dasharray="8 6" opacity="0.4"/>
+          <circle cx="60" cy="60" r="36" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.5"/>
+          <circle cx="60" cy="60" r="14" fill="white" opacity="0.85"/>
+          <path d="M60 20 Q80 40 100 60 Q80 80 60 100 Q40 80 20 60 Q40 40 60 20Z" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="about-image-accent" style="background: var(--green-dark); display:flex; align-items:center; justify-content:center; padding:20px;">
+        <div style="text-align:center; color:white;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:700; color:var(--green-light);">Utavu</div>
+          <div style="font-size:12px; opacity:0.6; letter-spacing:2px; text-transform:uppercase; margin-top:4px;">to enable · to grow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-label">About us</div>
+      <h2 class="section-title">Research that <em>matters</em>, innovation that <em>lasts</em></h2>
+      <p class="section-desc">Utavu Foundation is a Kenyan non-profit supporting homegrown research and social innovation. We exist to bridge the gap between an idea and its real-world impact — providing funding, mentorship, and networks to the next generation of African problem-solvers.</p>
+
+      <blockquote class="about-quote">"Utavu" means to enable, to allow growth — because we believe every community already holds the seed of its own solution.</blockquote>
+
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-title">Research</div>
+          <div class="pillar-desc">Rigorous, context-sensitive inquiry into the challenges communities face.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Prototyping</div>
+          <div class="pillar-desc">Rapid, iterative development of solutions tested in the real world.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Scale</div>
+          <div class="pillar-desc">Spreading what works — across counties, countries, and contexts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="programs-section">
+  <div class="programs-header">
+    <div>
+      <div class="section-label">What we do</div>
+      <h2 class="section-title">Our <em>programs</em></h2>
+      <p class="section-desc">Three pathways for turning bold ideas into lasting change across East Africa.</p>
+    </div>
+    <a href="#contact" class="btn-outline" style="flex-shrink:0;">Apply to a program →</a>
+  </div>
+
+  <div class="programs-grid">
+    <div class="prog-card reveal">
+      <div class="prog-num">01</div>
+      <div class="prog-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+      </div>
+      <h3 class="prog-title">Innovation Grants</h3>
+      <p class="prog-desc">Seed funding for early-stage ideas with demonstrated community need. We fund teams of 2–5 researchers and practitioners working on pressing local problems.</p>
+      <a href="#contact" class="prog-link">Apply for a grant →</a>
+    </div>
+
+    <div class="prog-card reveal">
+      <div class="prog-num">02</div>
+      <div class="prog-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <h3 class="prog-title">Research Fellowships</h3>
+      <p class="prog-desc">Structured 12-month fellowships for emerging researchers to pursue investigative projects with mentorship from experienced practitioners and academics.</p>
+      <a href="#contact" class="prog-link">Become a fellow →</a>
+    </div>
+
+    <div class="prog-card reveal">
+      <div class="prog-num">03</div>
+      <div class="prog-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3 class="prog-title">Community Labs</h3>
+      <p class="prog-desc">On-the-ground innovation hubs embedded in partner communities where local changemakers are equipped with tools, skills, and connections to prototype and iterate.</p>
+      <a href="#contact" class="prog-link">Find a lab →</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact" class="impact-section">
+  <div class="impact-grid">
+    <div>
+      <div class="section-label">Our impact</div>
+      <h2 class="section-title">Change you can <em>measure</em></h2>
+      <p class="section-desc">From Nairobi to Kisii, our programs have catalysed measurable improvements in health, agriculture, education, and economic opportunity.</p>
+
+      <div class="impact-list">
+        <div class="impact-item reveal">
+          <div class="impact-item-num">3K+</div>
+          <div class="impact-item-text">
+            <h4>Smallholder farmers trained</h4>
+            <p>Precision agriculture techniques introduced across Nyanza and Western Kenya.</p>
+          </div>
+        </div>
+        <div class="impact-item reveal">
+          <div class="impact-item-num">18</div>
+          <div class="impact-item-text">
+            <h4>Health prototypes deployed</h4>
+            <p>Low-cost diagnostics and community health tools now in active use.</p>
+          </div>
+        </div>
+        <div class="impact-item reveal">
+          <div class="impact-item-num">200+</div>
+          <div class="impact-item-text">
+            <h4>Young innovators mentored</h4>
+            <p>Through fellowships, bootcamps, and community labs across 8 counties.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-stack reveal">
+      <div class="testimonial-card">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-text">"Utavu gave our team more than funding — they gave us a framework to think about scale from day one. That mindset shift changed everything."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AM</div>
+          <div>
+            <div class="testimonial-author-name">Amina Mwangi</div>
+            <div class="testimonial-author-role">Innovation Grant recipient, Nairobi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-text">"The fellowship connected me with mentors I'd only read about. A year later our water-quality tool is being piloted in three counties."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JO</div>
+          <div>
+            <div class="testimonial-author-name">James Otieno</div>
+            <div class="testimonial-author-role">Research Fellow, Kisumu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testimonial-text">"Our community lab became the heartbeat of local innovation. Utavu trusted us to know our own problems — and supported us to solve them."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FK</div>
+          <div>
+            <div class="testimonial-author-name">Fatuma Kamau</div>
+            <div class="testimonial-author-role">Community Lab coordinator, Kisii</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div style="text-align:center; max-width:560px; margin:0 auto 0;">
+    <div class="section-label">The people</div>
+    <h2 class="section-title">Our <em>team</em></h2>
+    <p class="section-desc" style="margin:0 auto;">A small, dedicated team of researchers, designers, and community organisers driven by the belief that Africa's solutions will be African-made.</p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar">NK</div>
+      <div class="team-name">Njeri Kamau</div>
+      <div class="team-role">Executive Director</div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">DO</div>
+      <div class="team-name">David Ochieng</div>
+      <div class="team-role">Head of Research</div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">ZA</div>
+      <div class="team-name">Zara Abdi</div>
+      <div class="team-role">Programs Manager</div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">PN</div>
+      <div class="team-name">Peter Ndung'u</div>
+      <div class="team-role">Community Partnerships</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners-section">
+  <div class="partners-label">Trusted by partners across Kenya and beyond</div>
+  <div class="partners-row">
+    <div class="partner-logo">USAID</div>
+    <div class="partner-logo">Mastercard Foundation</div>
+    <div class="partner-logo">Kenya ICT Authority</div>
+    <div class="partner-logo">iHub</div>
+    <div class="partner-logo">Aga Khan Foundation</div>
+    <div class="partner-logo">GIZ Kenya</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-content">
+    <div class="section-label">Join us</div>
+    <h2 class="section-title">Ready to <em>enable</em> ideas to grow?</h2>
+    <p class="section-desc">Whether you're an innovator, researcher, funder, or community partner — there's a place for you in the Utavu ecosystem.</p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#programs" class="btn-outline">Explore programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-label">Get in touch</div>
+      <h2 class="section-title">Let's <em>build</em> together</h2>
+      <p class="section-desc">Whether you have an idea, a partnership proposal, or just want to learn more — we'd love to hear from you.</p>
+
+      <div style="margin-top:40px;">
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <h4>Location</h4>
+            <p>Nairobi, Kenya<br>East Africa</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <h4>Email</h4>
+            <p>info@utavufoundation.co.ke</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.69a16 16 0 006.29 6.29l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <h4>Phone</h4>
+            <p>+254 700 000 000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="Amina" />
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Mwangi" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label>I am a…</label>
+        <select>
+          <option value="">Select your role</option>
+          <option>Innovator / entrepreneur</option>
+          <option>Researcher / academic</option>
+          <option>Funder / donor</option>
+          <option>Community organisation</option>
+          <option>Government / public sector</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your idea, project, or how you'd like to partner…"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(event)">Send message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="3" fill="white"/>
+            <path d="M10 2 Q15 6 18 10 Q15 14 10 18 Q5 14 2 10 Q5 6 10 2Z" stroke="white" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">
+          Utavu Foundation
+          <span>Research & Innovation</span>
+        </div>
+      </div>
+      <p>Supporting research, prototyping and social innovation that solves local problems at scale. Registered in Kenya.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#programs">Innovation Grants</a></li>
+        <li><a href="#programs">Research Fellowships</a></li>
+        <li><a href="#programs">Community Labs</a></li>
+        <li><a href="#contact">Apply</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Organisation</h4>
+      <ul>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#contact">Partners</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Utavu Foundation. All rights reserved.</span>
+    <span>Nairobi, Kenya</span>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Message sent ✓';
+    btn.style.background = 'var(--green-accent)';
+    setTimeout(() => {
+      btn.textContent = 'Send message';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }, 1200);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 20 ? '0 2px 24px rgba(0,0,0,0.07)' : 'none';
+});
+</script>
+</body>
+</html>
